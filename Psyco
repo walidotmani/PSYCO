@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSYCOCOIFFURE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="#about">عنّي</a></li>
+            <li><a href="#projects">مشاريعي</a></li>
+            <li><a href="#contact">تواصل معي</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <img src="https://ibb.co/vv1c4ZJ6" alt "PSYCO">
+        <h1>bienvenue (PSYCO)</h1>
+        <p>développer web site and application| HTML | CSS | JavaScript | Python | Flutter</p>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>عنّي</h2>
+        <p>أنا مطور متحمس، أعمل على بناء مواقع وتطبيقات احترافية. أحب التعلم والتطوير المستمر.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>مشاريعي</h2>
+        <div class="project-card">
+            <h3>موقع شخصي</h3>
+            <p>HTML + CSS | صفحة تعريفية عن نفسي مع تصميم جذاب.</p>
+        </div>
+        <div class="project-card">
+            <h3>تطبيق Notes</h3>
+            <p>Flutter | تطبيق لتدوين الملاحظات اليومية.</p>
+        </div>
+        <div class="project-card">
+            <h3>تطبيق Weather</h3>
+            <p>JavaScript + API | تطبيق لمعرفة حالة الطقس الحالية لأي مدينة.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>تواصل معي</h2>
+        <p>gmail:  walidotmani740@gmail.com</p>
+        <p>whatsapp:  0542963194</p>
+        <p>facebook:  MC Psyco</p>
+        <p>instagram:  MC Psyco</p>
+        </table>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 BY PSYCO</p>
+    </footer>
+</body>
+</html>
