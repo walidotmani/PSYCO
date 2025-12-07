@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> الحلاقة العصرية/title>
+<style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Arial', sans-serif; }
+    body { background: #f2f2f2; color: #333; }
+    header { background: #222; color: #fff; padding: 20px; text-align: center; }
+    header h1 { font-size: 2.5rem; }
+    nav { background: #444; display:flex; justify-content:center; gap:20px; padding:10px; }
+    nav a { color:#fff; text-decoration:none; font-weight:bold; }
+    section { max-width: 1000px; margin: 20px auto; padding: 20px; }
+    h2 { margin-bottom:15px; color:#222; }
+    .gallery { display:grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap:15px; }
+    .gallery img { width:100%; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.2); }
+    .post, .comment { background:#fff; padding:15px; margin-bottom:15px; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+    form { display:flex; flex-direction:column; gap:10px; margin-top:10px; }
+    input, textarea, button { padding:10px; border-radius:5px; border:1px solid #ccc; }
+    button { background:#222; color:#fff; border:none; cursor:pointer; transition:0.3s; }
+    button:hover { background:#555; }
+    #chatBox { background:#fff; padding:10px; height:200px; overflow-y:auto; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+    #chatInput { display:flex; gap:10px; margin-top:10px; }
+    footer { background:#222; color:#fff; text-align:center; padding:15px; margin-top:30px; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>الحلاقة العصرية</h1>
+    <p>مرحبًا بك في معرض أعمالنا!</p>
+</header>
+
+<nav>
+    <a href="#gallery">معرض الصور</a>
+    <a href="#posts">الروتينات</a>
+    <a href="#chat">الدردشة</a>
+    <a href="#contact">تواصل معنا</a>
+</nav>
+
+<section id="gallery">
+    <h2>معرض القصات</h2>
+    <div class="gallery">
+        <img src="https://via.placeholder.com/300x300?text=قصة+1" alt="قصة 1">
+        <img src="https://via.placeholder.com/300x300?text=قصة+2" alt="قصة 2">
+        <img src="https://via.placeholder.com/300x300?text=قصة+3" alt="قصة 3">
+        <img src="https://via.placeholder.com/300x300?text=قصة+4" alt="قصة 4">
+    </div>
+</section>
+
+<section id="posts">
+    <h2>نشر الروتينات</h2>
+    <form id="postForm">
+        <input type="text" id="postTitle" placeholder="عنوان الروتين" required>
+        <textarea id="postContent" placeholder="وصف الروتين" rows="4" required></textarea>
+        <button type="submit">نشر</button>
+    </form>
+    <div id="postList"></div>
+</section>
+
+<section id="chat">
+    <h2>الدردشة</h2>
+    <div id="chatBox"></div>
+    <div id="chatInput">
+        <input type="text" id="chatMessage" placeholder="اكتب رسالة...">
+        <button id="sendBtn">إرسال</button>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>تواصل معنا</h2>
+    <p>البريد الإلكتروني: walidotmani740@gmail.com</p>
+    <p>واتساب: 0542963194</p>
+    <p>فيسبوك: MC Psyco</p>
+    <p>إنستغرام: Mc Psyco</p>
+</section>
+
+<footer>
+    &copy; 2026 صالون الحلاقة الاجتماعي
+</footer>
+
+<script>
+    // نشر الروتينات
+    const postForm = document.getElementById('postForm');
+    const postList = document.getElementById('postList');
+
+    postForm.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const title = document.getElementById('postTitle').value;
+        const content = document.getElementById('postContent').value;
+        const postDiv = document.createElement('div');
+        postDiv.classList.add('post');
+        postDiv.innerHTML = `
+            <h3>${title}</h3>
+            <p>${content}</p>
+            <div class="comments">
+                <form class="commentForm">
+                    <input type="text" placeholder="اكتب تعليقك..." required>
+                    <button type="submit">تعليق</button>
+                </form>
+                <div class="commentList"></div>
+            </div>
+        `;
+        postList.prepend(postDiv);
+        postForm.reset();
+
+        // التعليقات
+        const commentForm = postDiv.querySelector('.commentForm');
+        const commentList = postDiv.querySelector('.commentList');
+        commentForm.addEventListener('submit', (e)=>{
+            e.preventDefault();
+            const commentInput = commentForm.querySelector('input');
+            const commentText = commentInput.value;
+            const commentDiv = document.createElement('div');
+            commentDiv.classList.add('comment');
+            commentDiv.textContent = commentText;
+            commentList.appendChild(commentDiv);
+            commentInput.value = '';
+        });
+    });
+
+    // الدردشة البسيطة
+    const chatBox = document.getElementById('chatBox');
+    const chatMessage = document.getElementById('chatMessage');
+    const sendBtn = document.getElementById('sendBtn');
+
+    sendBtn.addEventListener('click', ()=>{
+        const msg = chatMessage.value.trim();
+        if(msg){
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('comment');
+            msgDiv.textContent = "أنت: " + msg;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            chatMessage.value = '';
+        }
+    });
+
+    chatMessage.addEventListener('keypress', (e)=>{
+        if(e.key === 'Enter') sendBtn.click();
+    });
+</script>
+
+</body>
+</html>
